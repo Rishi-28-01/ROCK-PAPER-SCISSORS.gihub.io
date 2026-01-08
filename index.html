@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="title">
+                <h1>ROCK<br>PAPER<br>SCISSORS</h1>
+            </div>
+
+            <div class="score-board">
+                <div class="score-box">
+                    <p>COMPUTER SCORE</p>
+                    <h2 id="computer-score">0</h2>
+                </div>
+                <div class="score-box">
+                    <p>YOUR SCORE</p>
+                    <h2 id="user-score">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAME AREA -->
+        <div class="game-area">
+            <!-- HURRAY SCREEN -->
+            <div class="hurray-screen hidden" id="hurray-screen">
+
+                <div class="stars">✨✨✨</div>
+
+                <div class="trophy">🏆</div>
+
+                <h1>HURRAY!!</h1>
+                <p>YOU WON THE GAME</p>
+
+                <button id="next-btn">NEXT</button>
+
+            </div>
+
+
+            <!-- CHOICE SCREEN -->
+            <div class="choices-screen" id="choices-screen">
+
+                <div class="choices">
+                    <div class="triangle-lines">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
+                    <div class="choice rock" data-choice="rock">
+                        <div class="icon">✊</div>
+                    </div>
+                    <div class="choice scissors" data-choice="scissors">
+                        <div class="icon">✌️</div>
+                    </div>
+                    <div class="choice paper" data-choice="paper">
+                        <div class="icon">✋</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULT SCREEN -->
+            <div class="result-screen hidden" id="result-screen">
+
+                <div class="pick user-pick">
+                    <p>YOU PICKED</p>
+                    <div class="choice-circle" id="user-choice"></div>
+                </div>
+
+                <div class="result-text">
+                    <h2 id="result-message">YOU WIN</h2>
+                    <p id="result-subtext">AGAINST PC</p>
+                    <button id="play-again">PLAY AGAIN</button>
+                </div>
+
+                <div class="pick pc-pick">
+                    <p>PC PICKED</p>
+                    <div class="choice-circle" id="pc-choice"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RULES BUTTON -->
+        <button class="rules-btn">RULES</button>
+
+        <!-- RULES POPUP -->
+        <div class="rules-popup hidden" id="rules-popup">
+
+            <button class="close-btn" id="close-rules">✕</button>
+
+            <h3>Game Rules</h3>
+
+            <ul>
+                <li>Rock beats scissors, scissors beat paper, and paper beats rock.</li>
+                <li>Agree ahead of time whether you’ll count off “rock, paper, scissors” or just “rock, paper,
+                    scissors.”</li>
+                <li>Use rock, paper, scissors to settle minor decisions or simply play to pass the time.</li>
+                <li>If both players lay down the same hand, each player lays down another hand.</li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
