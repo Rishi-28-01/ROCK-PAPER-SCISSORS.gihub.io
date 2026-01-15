@@ -2,6 +2,8 @@
 const choices = document.querySelectorAll(".choice");
 const userScoreEl = document.getElementById("user-score");
 const computerScoreEl = document.getElementById("computer-score");
+const header = document.querySelector(".header");
+
 
 const choicesScreen = document.getElementById("choices-screen");
 const resultScreen = document.getElementById("result-screen");
@@ -14,7 +16,9 @@ const resultMessage = document.getElementById("result-message");
 const resultSubtext = document.getElementById("result-subtext");
 
 const playAgainBtn = document.getElementById("play-again");
-const nextBtn = document.getElementById("next-btn");
+const nextBtn = document.getElementById("next-btn"); // RESULT screen NEXT
+const hurrayPlayAgainBtn = document.getElementById("hurray-play-again"); // HURRAY screen
+
 
 const rulesBtn = document.querySelector(".rules-btn");
 const rulesPopup = document.getElementById("rules-popup");
@@ -65,10 +69,9 @@ function getResult(userChoice, computerChoice) {
 }
 
 function getIcon(choice) {
-    if (choice === "rock") return "✊";
-    if (choice === "paper") return "✋";
-    return "✌️";
+    return `<img src="./assets/${choice}.svg" alt="${choice}" />`;
 }
+
 
 //  GAME LOGIC 
 choices.forEach(choice => {
@@ -93,8 +96,9 @@ choices.forEach(choice => {
         resultScreen.classList.remove("hidden");
 
         // Show choices
-        userChoiceEl.textContent = getIcon(userChoice);
-        pcChoiceEl.textContent = getIcon(computerChoice);
+        userChoiceEl.innerHTML = getIcon(userChoice);
+        pcChoiceEl.innerHTML = getIcon(computerChoice);
+
 
         // Reset glow & borders
         userChoiceEl.classList.remove(
@@ -116,19 +120,30 @@ choices.forEach(choice => {
         if (result === "win") {
             resultMessage.textContent = "YOU WIN";
             resultSubtext.textContent = "AGAINST PC";
-            userChoiceEl.classList.add("winner",`border-${userChoice}`);
-            playAgainBtn.textContent = "NEXT";
+
+            userChoiceEl.classList.add("winner", `border-${userChoice}`);
+
+            playAgainBtn.textContent = "PLAY AGAIN";
+            nextBtn.classList.remove("hidden");
+            rulesBtn.classList.add("rules-shifted");
         }
+
         else if (result === "lose") {
             resultMessage.textContent = "YOU LOST";
             resultSubtext.textContent = "AGAINST PC";
-            pcChoiceEl.classList.add("winner",`border-${computerChoice}`);
+            pcChoiceEl.classList.add("winner", `border-${computerChoice}`);
             playAgainBtn.textContent = "PLAY AGAIN";
+            nextBtn.classList.add("hidden");
+             rulesBtn.classList.remove("rules-shifted");
+
         }
         else {
             resultMessage.textContent = "TIE UP";
             resultSubtext.textContent = "";
             playAgainBtn.textContent = "REPLAY";
+            nextBtn.classList.add("hidden");
+             rulesBtn.classList.remove("rules-shifted");
+
         }
     });
 });
@@ -146,11 +161,24 @@ playAgainBtn.addEventListener("click", () => {
     // Otherwise → back to game
     resultScreen.classList.add("hidden");
     choicesScreen.classList.remove("hidden");
+    nextBtn.classList.add("hidden");
     resultSubtext.textContent = "AGAINST PC";
 });
 
 //  HURRAY NEXT 
 nextBtn.addEventListener("click", () => {
-    hurrayScreen.classList.add("hidden");
-    choicesScreen.classList.remove("hidden");
+  resultScreen.classList.add("hidden");
+  hurrayScreen.classList.remove("hidden");
+
+  header.classList.add("hidden");  
+  nextBtn.classList.add("hidden");
+  rulesBtn.classList.remove("rules-shifted");
+});
+
+hurrayPlayAgainBtn.addEventListener("click", () => {
+  hurrayScreen.classList.add("hidden");
+  choicesScreen.classList.remove("hidden");
+
+  header.classList.remove("hidden");
+  rulesBtn.classList.remove("hidden");
 });

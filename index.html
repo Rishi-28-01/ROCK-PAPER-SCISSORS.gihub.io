@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -34,17 +38,18 @@
         <div class="game-area">
             <!-- HURRAY SCREEN -->
             <div class="hurray-screen hidden" id="hurray-screen">
-
-                <div class="stars">✨✨✨</div>
-
-                <div class="trophy">🏆</div>
+                <div class="hurray-art">
+                    <img src="./assets/stars.svg" class="hurray-stars" alt="stars" />
+                    <img src="./assets/trophy.svg" class="hurray-trophy" alt="trophy" />
+                </div>
 
                 <h1>HURRAY!!</h1>
                 <p>YOU WON THE GAME</p>
 
-                <button id="next-btn">NEXT</button>
-
+                <button id="hurray-play-again">PLAY AGAIN</button>
             </div>
+
+
 
 
             <!-- CHOICE SCREEN -->
@@ -57,13 +62,21 @@
                         <span class="line line3"></span>
                     </div>
                     <div class="choice rock" data-choice="rock">
-                        <div class="icon">✊</div>
+                        <div class="choice-inner">
+                            <img src="./assets/rock.svg" alt="rock" />
+                        </div>
                     </div>
+
+
                     <div class="choice scissors" data-choice="scissors">
-                        <div class="icon">✌️</div>
+                        <div class="choice-inner">
+                            <img src="./assets/scissors.svg" alt="scissors" />
+                        </div>
                     </div>
                     <div class="choice paper" data-choice="paper">
-                        <div class="icon">✋</div>
+                        <div class="choice-inner">
+                            <img src="./assets/paper.svg" alt="paper" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,6 +108,8 @@
 
         <!-- RULES BUTTON -->
         <button class="rules-btn">RULES</button>
+        <button class="next-btn hidden" id="next-btn">NEXT</button>
+
 
         <!-- RULES POPUP -->
         <div class="rules-popup hidden" id="rules-popup">

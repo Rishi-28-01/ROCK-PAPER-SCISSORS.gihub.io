@@ -2,8 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto", sans-serif;
 }
+
 
 body {
     background-color: #8cc461;
@@ -59,17 +60,42 @@ body {
 }
 
 /* RULES BUTTON */
+
 .rules-btn {
-    position: absolute;
-    bottom: -70px;
-    right: 0;
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-    padding: 8px 20px;
-    border-radius: 8px;
-    cursor: pointer;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 21px;
+  padding: 4px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 50;
+  transition: right 0.2s ease;
 }
+
+
+.next-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 21px;
+  padding: 4px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.rules-shifted {
+  right: 145px;
+}
+
+
 
 
 /* GAME AREA */
@@ -105,10 +131,21 @@ body {
     transform: scale(1.08);
 }
 
-/* ICON */
-.icon {
-    font-size: 40px;
+.choice-inner {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.choice img {
+    display: block;
+}
+
+
 
 /* INDIVIDUAL CHOICES */
 .rock {
@@ -130,6 +167,25 @@ body {
     margin-left: -55px;
 }
 
+/* Rock */
+.rock img {
+    width: 70px;
+    height: 58.5px;
+}
+
+/* Scissors */
+.scissors img {
+    width: 37px;
+    height: 53.5px;
+}
+
+/* Paper */
+.paper img {
+    width: 65px;
+    height: 72px;
+}
+
+
 .triangle-lines {
     position: absolute;
     width: 100%;
@@ -147,14 +203,14 @@ body {
 
 /* Rock ↔ Scissors (top line) */
 .line1 {
-    width: 160px;
+    width: 133px;
     top: 55px;
     left: 70px;
 }
 
 /* Rock ↔ Paper (left diagonal) */
 .line2 {
-    width: 180px;
+    width: 107.91px;
     transform: rotate(60deg);
     top: 130px;
     left: 20px;
@@ -162,7 +218,7 @@ body {
 
 /* Scissors ↔ Paper (right diagonal) */
 .line3 {
-    width: 180px;
+    width: 107.91px;
     transform: rotate(-60deg);
     top: 130px;
     right: 20px;
@@ -198,6 +254,8 @@ body {
     margin-bottom: 10px;
 }
 
+
+
 /* CLOSE BUTTON */
 .close-btn {
     position: absolute;
@@ -222,12 +280,11 @@ body {
 
 /* RESULT SCREEN */
 .result-screen {
-    /* margin-top: 60px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* margin-top: 60px; */
     color: white;
-
 }
 
 .pick {
@@ -235,7 +292,7 @@ body {
 }
 
 .pick p {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     font-size: 14px;
 }
 
@@ -253,47 +310,49 @@ body {
 
 /* WINNER BORDER COLORS */
 .border-rock {
-  border: 14px solid #0074b6;
+    border: 14px solid #0074b6;
 }
 
 .border-paper {
-  border: 14px solid #ffa943;
+    border: 14px solid #ffa943;
 }
 
 .border-scissors {
-  border: 14px solid #bd00ff;
+    border: 14px solid #bd00ff;
 }
 
 
 /* GLOW EFFECT */
 .winner {
     box-shadow:
-        0 0 0 20px rgba(46, 154, 37, 0.2),
-        0 0 0 40px rgba(46, 154, 37, 0.3),
-        0 0 0 60px rgba(46, 154, 37, 0.25),
-        0 0 0 80px rgba(46, 154, 37, 0.15);
+        0 0 0 30px rgba(46, 154, 37, 0.8),
+        0 0 0 50px rgba(46, 154, 37, 0.5),
+        0 0 0 70px rgba(46, 154, 37, 0.3);
 }
 
 /* RESULT TEXT */
 .result-text {
     text-align: center;
     padding: 90px;
+    margin-top: 20px;
 }
 
 .result-text h2 {
     font-size: 40px;
+    font-weight: 700;
 }
 
 .result-text p {
-    margin: 10px 0 20px;
     font-size: 18px;
+    margin-top: 8px;
 }
 
-.result-text button {
-    padding: 10px 30px;
+#play-again {
+    margin-top: 20px;
+    padding: 10px 32px;
     border-radius: 8px;
     border: none;
-    font-weight: bold;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -305,30 +364,65 @@ body {
 
 /* HURRAY SCREEN */
 .hurray-screen {
-    margin-top: 80px;
     text-align: center;
-    color: white;
 }
 
 .hurray-screen h1 {
-    font-size: 64px;
-    margin-top: 20px;
+    font-size: 105px;
+    font-weight: 700;
+    color: white;
 }
 
 .hurray-screen p {
-    font-size: 24px;
-    margin-bottom: 30px;
+    font-size: 35px;
+    margin: 10px 0 30px;
+    color: white;
 }
 
-.trophy {
-    font-size: 100px;
-    margin: 20px 0;
+/* HURRAY ART GROUP (504 x 297) */
+.hurray-art {
+    position: relative;
+    width: 504px;
+    height: 297px;
+    /* margin: 0 auto 20px; */
 }
 
-.stars {
-    font-size: 40px;
-    animation: sparkle 1.5s infinite alternate;
+/* Stars fill entire group */
+.hurray-stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
+
+/* Trophy centered */
+.hurray-trophy {
+    position: absolute;
+    width: 200.43px;
+    height: 201;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+}
+
+#hurray-play-again {
+    padding: 10px 32px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+
+
+/* #next-btn {
+  padding: 12px 36px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+} */
+
 
 @keyframes sparkle {
     from {
@@ -340,10 +434,10 @@ body {
     }
 }
 
-#next-btn {
+/* #next-btn {
     padding: 12px 40px;
     border-radius: 8px;
     border: none;
     font-weight: bold;
     cursor: pointer;
-}
+} */
